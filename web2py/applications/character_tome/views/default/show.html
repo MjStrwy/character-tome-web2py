@@ -1,0 +1,55 @@
+{{extend 'layout.html'}}
+<h1>Character: {{=character.name}}</h1>
+<div style="text-align:center">
+    <img width:"100px"
+         src="{{=URL('download', args=character.image)}}" />
+</div>
+<div>
+    <h2>
+        Description:
+    </h2>
+    <p>
+        {{=character.description}}
+    </p>
+</div>
+<div>
+    <h2>High Concept: {{=character.high_concept}}</h2>
+    <h2>Trouble: {{=character.trouble}}</h2>
+</div>
+<div>
+    <h2>
+        Approaches:
+    </h2>
+    <ul>
+        <li><strong>Careful:</strong> {{=fate_ladder[character.app_careful]}}</li>
+        <li><strong>Clever:</strong> {{=fate_ladder[character.app_clever]}}</li>
+        <li><strong>Flashy:</strong> {{=fate_ladder[character.app_flashy]}}</li>
+        <li><strong>Forceful:</strong> {{=fate_ladder[character.app_forceful]}}</li>
+        <li><strong>Quick:</strong> {{=fate_ladder[character.app_quick]}}</li>
+        <li><strong>Sneaky:</strong> {{=fate_ladder[character.app_sneaky]}}</li>
+    </ul>
+</div>
+{{if len(aspects):}}
+    <h2>Other Aspects:</h2>
+    <ul>
+        {{for aspect in aspects:}}
+            <li>{{=aspects.aspect}}</li>
+        {{pass}}
+    </ul>
+{{else:}}
+    <h3>No aspects added yet</h3>
+{{pass}}
+<h2>Add an aspect</h2>
+{{=aspects_form}}
+{{if len(stunts):}}
+    <h2>Other stunts:</h2>
+    <ul>
+        {{for stunt in stunts:}}
+            <li>{{=stunts.stunt}}</li>
+        {{pass}}
+    </ul>
+{{else:}}
+    <h3>No stunts added yet</h3>
+{{pass}}
+<h2>Add a stunt</h2>
+{{=stunts_form}}

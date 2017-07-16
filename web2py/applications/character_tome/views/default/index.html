@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<h1>Current Characters:</h1>
+<ul>
+    {{for character in characters:}}
+    {{=LI(A(character.name, _href=URL("show", args=character.id)))}}
+    {{pass}}
+</ul>
